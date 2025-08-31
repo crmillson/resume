@@ -11,7 +11,7 @@ interface ButtonProps {
 }
 
 /**
- * Reusable Button component
+ * Reusable Button component with military-inspired design
  * Following Interface Segregation Principle - only includes necessary props
  */
 export const Button: React.FC<ButtonProps> = ({
@@ -23,13 +23,13 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   className = ''
 }) => {
-  const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+  const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none transform hover:scale-105 active:scale-95';
   
   const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700',
-    secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200',
-    outline: 'border border-gray-300 bg-transparent hover:bg-gray-50',
-    ghost: 'bg-transparent hover:bg-gray-100'
+    primary: 'bg-accent-600 text-white hover:bg-accent-700 shadow-military-md focus-visible:ring-accent-500',
+    secondary: 'bg-military-200 text-military-800 hover:bg-military-300 shadow-military focus-visible:ring-military-400',
+    outline: 'border-2 border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white focus-visible:ring-accent-500',
+    ghost: 'bg-transparent hover:bg-military-100 text-military-700 focus-visible:ring-military-400'
   };
   
   const sizeClasses = {

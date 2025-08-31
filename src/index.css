@@ -1,5 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles can be added here */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size for consistent rem calculations */
+  }
+  
+  body {
+    @apply font-body text-military-800 bg-military-50;
+    font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1, 'ss02' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Typography Scale */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold text-military-900 tracking-tight;
+    margin-bottom: 0.5em;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    line-height: 1.2;
+    margin-bottom: 0.75em;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+    line-height: 1.2;
+    margin-bottom: 0.75em;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+  
+  h5 {
+    @apply text-lg md:text-xl;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+  
+  h6 {
+    @apply text-base md:text-lg;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    @apply text-military-700;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Typography for different content types */
+  .text-body {
+    @apply text-base text-military-700;
+    line-height: 1.6;
+  }
+  
+  .text-caption {
+    @apply text-sm text-military-600;
+    line-height: 1.4;
+  }
+  
+  .text-display {
+    @apply font-display font-bold tracking-tight;
+  }
+  
+  .text-mono {
+    @apply font-mono;
+  }
+  
+  a {
+    @apply text-accent-600 hover:text-accent-700 transition-colors duration-200;
+  }
+  
+  /* List typography */
+  ul, ol {
+    @apply text-military-700 mb-6;
+    line-height: 1.6;
+    padding-left: 1.5rem;
+  }
+  
+  li {
+    @apply mb-2;
+  }
+  
+  /* Blockquote typography */
+  blockquote {
+    @apply border-l-4 border-accent-500 pl-6 py-4 my-6 bg-accent-50 rounded-r-lg;
+  }
+  
+  blockquote p {
+    @apply text-lg text-military-800 italic mb-0;
+    line-height: 1.625;
+  }
+  
+  /* Code typography */
+  code {
+    @apply font-mono text-sm bg-military-100 text-military-800 px-2 py-1 rounded;
+  }
+  
+  pre {
+    @apply font-mono text-sm bg-military-900 text-military-100 p-4 rounded-lg overflow-x-auto;
+  }
+}
+
+@layer components {
+  /* Button typography */
+  .btn-primary {
+    @apply bg-accent-600 hover:bg-accent-700 text-white font-medium px-6 py-3 rounded-md shadow-military-md transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-military-200 hover:bg-military-300 text-military-800 font-medium px-6 py-3 rounded-md shadow-military transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-military-400 focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white font-medium px-6 py-3 rounded-md transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2;
+  }
+  
+  /* Card typography */
+  .card {
+    @apply bg-white rounded-lg shadow-military-md border border-military-200 p-6;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-military-lg transition-shadow duration-300;
+  }
+  
+  /* Section typography */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .container-military {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Text utilities */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-600 to-accent-800 bg-clip-text text-transparent;
+  }
+  
+  .border-military {
+    @apply border-military-200;
+  }
+  
+  .bg-military-gradient {
+    @apply bg-gradient-to-br from-military-50 to-military-100;
+  }
+  
+  .bg-accent-gradient {
+    @apply bg-gradient-to-br from-accent-50 to-accent-100;
+  }
+  
+  /* Typography-specific components */
+  .heading-1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-display font-bold text-military-900 tracking-tight;
+    line-height: 1.2;
+  }
+  
+  .heading-2 {
+    @apply text-3xl md:text-4xl font-display font-semibold text-military-900 tracking-tight;
+    line-height: 1.2;
+  }
+  
+  .heading-3 {
+    @apply text-2xl md:text-3xl font-display font-semibold text-military-900 tracking-tight;
+    line-height: 1.2;
+  }
+  
+  .body-large {
+    @apply text-lg text-military-700;
+    line-height: 1.6;
+  }
+  
+  .body-medium {
+    @apply text-base text-military-700;
+    line-height: 1.6;
+  }
+  
+  .body-small {
+    @apply text-sm text-military-600;
+    line-height: 1.4;
+  }
+  
+  .caption {
+    @apply text-xs text-military-500 font-medium;
+    line-height: 1.4;
+  }
+  
+  /* Spacing utilities for typography */
+  .text-spacing-tight {
+    @apply tracking-tight;
+  }
+  
+  .text-spacing-normal {
+    @apply tracking-normal;
+  }
+  
+  .text-spacing-wide {
+    @apply tracking-wide;
+  }
+  
+  .text-spacing-wider {
+    @apply tracking-wider;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Typography utilities */
+  .font-feature-numeric {
+    font-feature-settings: 'tnum' 1, 'onum' 1;
+  }
+  
+  .font-feature-ligatures {
+    font-feature-settings: 'liga' 1, 'dlig' 1;
+  }
+  
+  .font-feature-contextual {
+    font-feature-settings: 'calt' 1;
+  }
+  
+  /* Text rendering utilities */
+  .text-render-optimized {
+    text-rendering: optimizeLegibility;
+  }
+  
+  .text-render-speed {
+    text-rendering: optimizeSpeed;
+  }
+}

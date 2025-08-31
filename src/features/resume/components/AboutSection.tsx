@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Target, Users, TrendingUp, Award } from 'lucide-react';
+import { Target, Users, TrendingUp, Award, Shield, Zap } from 'lucide-react';
+import headshotImage from '../../../assets/Headshot.png';
 
 interface AboutSectionProps {
   personalInfo: {
@@ -48,29 +49,30 @@ const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo }) => {
   }, [isInView]);
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Image Placeholder */}
+    <section id="about" className="section-padding bg-military-gradient">
+      <div className="container-military">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Headshot Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-square bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center">
-              <div className="text-center text-white">
-                <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mb-4">
-                  <span className="text-4xl font-bold">CM</span>
-                </div>
-                <p className="text-lg font-medium">Professional Headshot</p>
-                <p className="text-sm opacity-80">Military-style confident pose</p>
-              </div>
+            <div className="relative">
+              <img 
+                src={headshotImage} 
+                alt="Chris Millson - Professional Headshot" 
+                className="w-full h-auto rounded-2xl shadow-military-lg border-4 border-white"
+              />
+              
+              {/* Overlay gradient for military aesthetic */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent-600/10 to-accent-800/10 rounded-2xl pointer-events-none"></div>
             </div>
             
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-20 h-20 border-4 border-blue-200 rounded-full"></div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 border-4 border-blue-300 rounded-full"></div>
+            <div className="absolute -top-4 -right-4 w-20 h-20 border-4 border-accent-200 rounded-full"></div>
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 border-4 border-accent-300 rounded-full"></div>
           </motion.div>
 
           {/* Right Column - Content */}
@@ -80,11 +82,14 @@ const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo }) => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              About Me
-            </h2>
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-12 h-1 bg-accent-600 rounded-full"></div>
+              <h2 className="text-4xl font-display font-bold text-military-900">
+                About Me
+              </h2>
+            </div>
             
-            <div className="prose prose-lg text-gray-700 mb-8">
+            <div className="prose prose-lg text-military-700 mb-8">
               <p className="text-lg leading-relaxed mb-6">
                 {personalInfo.summary}
               </p>
@@ -97,6 +102,22 @@ const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo }) => {
               </p>
             </div>
 
+            {/* Core Values */}
+            <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex items-center space-x-2 bg-accent-50 px-3 py-2 rounded-full border border-accent-200">
+                <Target className="w-4 h-4 text-accent-600" />
+                <span className="text-sm font-medium text-accent-700">Precision</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-accent-50 px-3 py-2 rounded-full border border-accent-200">
+                <Shield className="w-4 h-4 text-accent-600" />
+                <span className="text-sm font-medium text-accent-700">Leadership</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-accent-50 px-3 py-2 rounded-full border border-accent-200">
+                <Zap className="w-4 h-4 text-accent-600" />
+                <span className="text-sm font-medium text-accent-700">Innovation</span>
+              </div>
+            </div>
+
             {/* Key Stats */}
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, index) => (
@@ -105,13 +126,13 @@ const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo }) => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="text-center p-4 bg-gray-50 rounded-lg"
+                  className="card-hover text-center p-6"
                 >
-                  <stat.icon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                  <div className="text-3xl font-bold text-gray-900 mb-1">
+                  <stat.icon className="w-8 h-8 text-accent-600 mx-auto mb-3" />
+                  <div className="text-3xl font-bold text-military-900 mb-2">
                     {counts[Object.keys(counts)[index] as keyof typeof counts]}{stat.suffix}
                   </div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-sm text-military-600 font-medium">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
