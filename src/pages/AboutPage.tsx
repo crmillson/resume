@@ -4,10 +4,7 @@ import { useRef } from 'react';
 import { Target, Users, TrendingUp, Award, Shield, Zap } from 'lucide-react';
 import headshotImage from '../assets/Headshot.png';
 import PageLayout from '../components/layout/PageLayout';
-import { useContent } from '../contexts/AppContext';
-
 const AboutPage: React.FC = () => {
-  const { resumeData } = useContent();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -87,53 +84,13 @@ const AboutPage: React.FC = () => {
                 </h2>
               </div>
               
-              <div className="prose prose-lg text-military-700 mb-8">
-                <p className="text-lg leading-relaxed mb-6">
-                  {resumeData.personalInfo.summary}
-                </p>
-                
-                <p className="text-lg leading-relaxed">
-                  My journey from Special Forces operations to leading AI development teams has taught me that 
-                  the principles of military leadership—precision, adaptability, and mission focus—are directly 
-                  applicable to solving complex technological challenges. I believe in taking ego out of the equation 
-                  and focusing on what truly matters: delivering results while building strong, capable teams.
+              <div className="mb-8">
+                <p className="text-lg leading-relaxed text-military-700">
+                  My leadership philosophy was forged in the crucible of Special Forces operations and refined through the humbling experience of learning to code at 30. After a career of tactical successes, I found myself at the bottom of my programming cohort—a reminder that growth requires vulnerability and persistence. Today, as a Technical Program Manager leading AI initiatives, I help teams navigate complexity by embracing their authentic strengths, maintaining mission focus, and understanding that everyone has their own timeline for excellence. The result? Teams that consistently deliver under pressure while fostering cultures of continuous learning.
                 </p>
               </div>
 
-              {/* Core Values */}
-              <div className="flex flex-wrap gap-4 mb-8">
-                <div className="flex items-center space-x-2 bg-accent-50 px-3 py-2 rounded-full border border-accent-200">
-                  <Target className="w-4 h-4 text-accent-600" />
-                  <span className="text-sm font-medium text-accent-700">Precision</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-accent-50 px-3 py-2 rounded-full border border-accent-200">
-                  <Shield className="w-4 h-4 text-accent-600" />
-                  <span className="text-sm font-medium text-accent-700">Leadership</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-accent-50 px-3 py-2 rounded-full border border-accent-200">
-                  <Zap className="w-4 h-4 text-accent-600" />
-                  <span className="text-sm font-medium text-accent-700">Innovation</span>
-                </div>
-              </div>
 
-              {/* Key Stats */}
-              <div className="grid grid-cols-2 gap-6">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="card-hover text-center p-6"
-                  >
-                    <stat.icon className="w-8 h-8 text-accent-600 mx-auto mb-3" />
-                    <div className="text-3xl font-bold text-military-900 mb-2">
-                      {counts[Object.keys(counts)[index] as keyof typeof counts]}{stat.suffix}
-                    </div>
-                    <div className="text-sm text-military-600 font-medium">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
             </motion.div>
           </div>
         </div>

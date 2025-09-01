@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-import { AppState, AppAction, ResumeData, TTIData, ProjectData } from '../types';
-import { RESUME_DATA } from '../constants/resumeData';
+import { AppState, AppAction, TTIData, LeadershipStory, ProfessionalResource } from '../types';
+import { ASSESSMENT_DATA } from '../constants/assessmentData';
 
 // Initial state
 const initialState: AppState = {
@@ -10,29 +10,16 @@ const initialState: AppState = {
     previousPage: null,
   },
   content: {
-    resumeData: RESUME_DATA,
-    assessmentData: {
-      behavioralStyle: {
-        type: 'Analytical',
-        description: 'Data-driven decision maker with strong analytical capabilities',
-        strengths: ['Problem Solving', 'Strategic Thinking', 'Attention to Detail'],
-        challenges: ['Patience with Process', 'Delegation'],
-        communicationStyle: 'Direct and factual'
-      },
-      drivingForces: {
-        primary: 'Achievement',
-        secondary: 'Knowledge',
-        description: 'Driven by measurable results and continuous learning',
-        motivators: ['Success', 'Growth', 'Impact']
-      },
-      insights: []
-    },
-    projectsData: []
+    assessmentData: ASSESSMENT_DATA,
+    leadershipStories: [],
+    resources: []
   },
   ui: {
     theme: 'light',
     animations: true,
-    loading: false,
+    loading: false, // Ensure this starts as false
+    modalOpen: false,
+    activeModal: null,
   },
 };
 
@@ -85,14 +72,7 @@ function appReducer(state: AppState, action: AppAction): AppState {
         },
       };
     
-    case 'SET_RESUME_DATA':
-      return {
-        ...state,
-        content: {
-          ...state.content,
-          resumeData: action.payload,
-        },
-      };
+
     
     case 'SET_ASSESSMENT_DATA':
       return {
@@ -103,12 +83,43 @@ function appReducer(state: AppState, action: AppAction): AppState {
         },
       };
     
-    case 'SET_PROJECTS_DATA':
+
+
+    case 'SET_LEADERSHIP_STORIES':
       return {
         ...state,
         content: {
           ...state.content,
-          projectsData: action.payload,
+          leadershipStories: action.payload,
+        },
+      };
+
+    case 'SET_RESOURCES':
+      return {
+        ...state,
+        content: {
+          ...state.content,
+          resources: action.payload,
+        },
+      };
+
+    case 'OPEN_MODAL':
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          modalOpen: true,
+          activeModal: action.payload,
+        },
+      };
+
+    case 'CLOSE_MODAL':
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          modalOpen: false,
+          activeModal: null,
         },
       };
     
@@ -168,20 +179,24 @@ export const useUI = () => {
     theme: state.ui.theme,
     animations: state.ui.animations,
     loading: state.ui.loading,
+    modalOpen: state.ui.modalOpen,
+    activeModal: state.ui.activeModal,
     setTheme: (theme: 'light' | 'dark') => dispatch({ type: 'SET_THEME', payload: theme }),
     setAnimations: (enabled: boolean) => dispatch({ type: 'SET_ANIMATIONS', payload: enabled }),
     setLoading: (loading: boolean) => dispatch({ type: 'SET_LOADING', payload: loading }),
+    openModal: (modalId: string) => dispatch({ type: 'OPEN_MODAL', payload: modalId }),
+    closeModal: () => dispatch({ type: 'CLOSE_MODAL', payload: null }),
   };
 };
 
 export const useContent = () => {
   const { state, dispatch } = useApp();
   return {
-    resumeData: state.content.resumeData,
     assessmentData: state.content.assessmentData,
-    projectsData: state.content.projectsData,
-    setResumeData: (data: ResumeData) => dispatch({ type: 'SET_RESUME_DATA', payload: data }),
+    leadershipStories: state.content.leadershipStories,
+    resources: state.content.resources,
     setAssessmentData: (data: TTIData) => dispatch({ type: 'SET_ASSESSMENT_DATA', payload: data }),
-    setProjectsData: (data: ProjectData[]) => dispatch({ type: 'SET_PROJECTS_DATA', payload: data }),
+    setLeadershipStories: (data: LeadershipStory[]) => dispatch({ type: 'SET_LEADERSHIP_STORIES', payload: data }),
+    setResources: (data: ProfessionalResource[]) => dispatch({ type: 'SET_RESOURCES', payload: data }),
   };
 };

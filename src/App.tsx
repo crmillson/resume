@@ -9,8 +9,7 @@ const HomePage = React.lazy(() => import('./pages/HomePage'));
 const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 
 // Placeholder components for other pages (to be implemented)
-const ExperiencePage = React.lazy(() => import('./pages/ExperiencePage'));
-const ProjectsPage = React.lazy(() => import('./pages/ProjectsPage'));
+
 const LeadershipPage = React.lazy(() => import('./pages/LeadershipPage'));
 const AssessmentsPage = React.lazy(() => import('./pages/AssessmentsPage'));
 const ContactPage = React.lazy(() => import('./pages/ContactPage'));
@@ -39,16 +38,7 @@ function App() {
                 <AboutPage />
               </Suspense>
             } />
-            <Route path="experience" element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <ExperiencePage />
-              </Suspense>
-            } />
-            <Route path="projects" element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <ProjectsPage />
-              </Suspense>
-            } />
+            
             <Route path="leadership" element={
               <Suspense fallback={<LoadingSpinner />}>
                 <LeadershipPage />
