@@ -8,12 +8,11 @@ const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigationItems = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    
-    { path: '/leadership', label: 'Leadership' },
-    { path: '/assessments', label: 'Assessments' },
-    { path: '/contact', label: 'Contact' }
+            { path: '/', label: 'Home' },
+        { path: '/about', label: 'About' },
+        { path: '/experience', label: 'Experience' },
+        { path: '/leadership', label: 'Leadership' },
+        { path: '/contact', label: 'Contact' }
   ];
 
   const handleNavClick = () => {

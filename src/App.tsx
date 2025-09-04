@@ -7,11 +7,11 @@ import LoadingSpinner from './components/layout/LoadingSpinner';
 // Lazy load page components for better performance
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const AboutPage = React.lazy(() => import('./pages/AboutPage'));
+const ExperiencePage = React.lazy(() => import('./pages/ExperiencePage'));
 
 // Placeholder components for other pages (to be implemented)
 
 const LeadershipPage = React.lazy(() => import('./pages/LeadershipPage'));
-const AssessmentsPage = React.lazy(() => import('./pages/AssessmentsPage'));
 const ContactPage = React.lazy(() => import('./pages/ContactPage'));
 
 // 404 Error Page
@@ -38,17 +38,18 @@ function App() {
                 <AboutPage />
               </Suspense>
             } />
+            <Route path="experience" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <ExperiencePage />
+              </Suspense>
+            } />
             
             <Route path="leadership" element={
               <Suspense fallback={<LoadingSpinner />}>
                 <LeadershipPage />
               </Suspense>
             } />
-            <Route path="assessments" element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <AssessmentsPage />
-              </Suspense>
-            } />
+
             <Route path="contact" element={
               <Suspense fallback={<LoadingSpinner />}>
                 <ContactPage />

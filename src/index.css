@@ -259,4 +259,12 @@
   .text-render-speed {
     text-rendering: optimizeSpeed;
   }
+  
+  /* Text gradient utility */
+  .text-gradient {
+    background: linear-gradient(135deg, #d69e2e 0%, #ed8936 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }

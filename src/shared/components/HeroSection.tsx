@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, ArrowRight, Shield, Target, Zap } from 'lucide-react';
-import { Button } from '../../../shared/ui/Button';
+import { Button } from '../ui/Button';
 
 interface HeroSectionProps {
   onExplore: () => void;
@@ -48,7 +48,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onExplore, onDownloadResume }
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Technical Program Manager | Special Forces Veteran | Emerging Technologies
+          Special Forces Veteran | Emerging Technologies | TS SCI
         </motion.div>
 
         {/* Tagline */}
@@ -110,25 +110,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onExplore, onDownloadResume }
           </Button>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-        >
-          <motion.div
-            className="w-6 h-10 border-2 border-military-300/30 rounded-full flex justify-center"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <motion.div
-              className="w-1 h-3 bg-accent-400 rounded-full mt-2"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </motion.div>
-        </motion.div>
+
       </div>
 
       {/* Floating Elements */}

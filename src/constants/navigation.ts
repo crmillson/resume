@@ -15,19 +15,18 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     icon: 'user',
     order: 2
   },
-
+  {
+    path: '/experience',
+    label: 'Experience',
+    description: 'Professional experience and career timeline',
+    icon: 'briefcase',
+    order: 3
+  },
   {
     path: '/leadership',
     label: 'Leadership',
     description: 'Military-to-tech transition stories',
     icon: 'shield',
-    order: 3
-  },
-  {
-    path: '/assessments',
-    label: 'Assessments',
-    description: 'TTI behavioral insights and analysis',
-    icon: 'chart',
     order: 4
   },
   {
